@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bigdeal - Multi-purpopse E-commerce Html Template</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -117,13 +117,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h2 class="title">thank you</h2>
+                                    <h2 class="title">Xác nhận quên mật khẩu</h2>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <p>Đơn hàng đã được tiếp nhận và đang trên đường vận chuyển</p>
-                                    <p>Mã tra cứu đơn hàng : {{ $data['change_password'] }}</p>
+                                    <p>Click vào đường dẫn bên dưới để thay đổi mật khẩu</p>
+                                    <p>{{ route('client.change_password', ['crypt' =>$data['random']]) }}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -132,84 +132,6 @@
                                     <div style="border-top:1px solid #777;height:1px;margin-top: 30px;">
                                 </td>
                             </tr>
-                        </table>
-                        <table border="0" cellpadding="0" cellspacing="0" align="center">
-                            <tr>
-                                <td>
-                                    <h2 class="title">Chi tiết đơn hàng của {{ $data['order']['fullname'] }}</h2>
-                                </td>
-                            </tr>
-                        </table>
-                        <table class="order-detail" border="0" cellpadding="0" cellspacing="0" align="center">
-                            <tr align="left">
-                                <th>HÌNH ẢNH</th>
-                                <th style="padding-left: 15px;">TÊN SẢN PHẨM</th>
-                                <th>SỐ LƯỢNG</th>
-                                <th>GIÁ</th>
-                            </tr>
-                            <?php $total_price = 0; ?>
-                            @foreach ($data['order_detail'] as $item)
-                            <?php $total_price += ($item->qty * $item->product->price); ?>
-                            <tr>
-                                <td>
-                                    <img src="{{ url($item->product->images[0]->url) }}" width="70">
-                                </td>
-                                <td valign="top" style="padding-left: 15px;">
-                                    <h5 style="margin-top: 15px;">{{ $item->product->name }}</h5>
-                                </td>
-                                <td valign="top" style="padding-left: 15px;">
-                                    <h5 style="font-size: 14px; color:#444;margin-top: 10px;">QTY : <span>{{ $item->qty }}</span></h5>
-                                </td>
-                                <td valign="top" style="padding-left: 15px;">
-                                    <h5 style="font-size: 14px; color:#444;margin-top:15px"><b>{{ current_format($item->qty * $item->product->price) }}</b></h5>
-                                </td>
-                            </tr>
-                            @endforeach
-    
-    
-                            <tr>
-                                <td colspan="2"
-                                    style="line-height: 49px;font-size: 13px;color: #000000;padding-left: 20px;text-align:left;border-right: unset;">
-                                    Tạm tính:</td>
-                                <td colspan="3" class="price"
-                                    style="line-height: 49px;text-align: right;padding-right: 28px;font-size: 13px;color: #000000;text-align:right;border-left: unset;">
-                                    <b>{{ current_format($total_price) }}</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"
-                                    style="line-height: 49px;font-size: 13px;color: #000000;padding-left: 20px;text-align:left;border-right: unset;">
-                                    Giảm giá :</td>
-                                <td colspan="3" class="price"
-                                    style="line-height: 49px;text-align: right;padding-right: 28px;font-size: 13px;color: #000000;text-align:right;border-left: unset;">
-                                    <b>{{ current_format(0) }}</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="line-height: 49px;font-size: 13px;color: #000000;
-                                        padding-left: 20px;text-align:left;border-right: unset;">Phí vận chuyển :</td>
-                                <td colspan="3" class="price"
-                                    style="
-                                            line-height: 49px;text-align: right;padding-right: 28px;font-size: 13px;color: #000000;text-align:right;border-left: unset;">
-                                    <b>{{ current_format(0) }}</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="line-height: 49px;font-size: 13px;color: #000000;
-                                        padding-left: 20px;text-align:left;border-right: unset;">TỔNG TIỀN ĐƠN HÀNG :</td>
-                                <td colspan="3" class="price"
-                                    style="line-height: 49px;text-align: right;padding-right: 28px;font-size: 13px;color: #000000;text-align:right;border-left: unset;">
-                                    <b>{{ current_format($total_price) }}</b></td>
-                            </tr>
-                        </table>
-                        <table cellpadding="0" cellspacing="0" border="0" align="left"
-                            style="width: 100%;margin-top: 30px;    margin-bottom: 30px;">
-                            <tbody>
-                                <tr>
-                                    <td style="font-size: 13px; font-weight: 400; color: #444444; letter-spacing: 0.2px;width: 100%;">
-                                        <h5 style="font-size: 16px; font-weight: 500;color: #000; line-height: 16px; padding-bottom: 13px; border-bottom: 1px solid #e6e8eb; letter-spacing: -0.65px; margin-top:0; margin-bottom: 13px;">
-                                            ĐỊA CHỈ NHẬN HÀNG</h5>
-                                        <p style="text-align: left;font-weight: normal; font-size: 14px; color: #000000;line-height: 21px;margin-top: 0;">{{ $data['order']['address'] }}</p>
-                                    </td>
-                                </tr>
-                            </tbody>
                         </table>
                     </td>
                 </tr>

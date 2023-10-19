@@ -91,23 +91,37 @@ $categories_post = Category::where([['type', 'post'], ['parent_id', '!=', 999999
                <div class="col-md-8 col-sm-12">
                   <div class="top-header-left">
                      <ul>
-                        {{-- @if (!empty($widgets['top_header']->widget_details)) --}}
+                        @if (!empty($widgets['top_header']->widget_details))
                         @foreach ($widgets['top_header']->widget_details as $wd_item)
                         <li>
                            <a href="{!! !empty($wd_item->url) ? $wd_item->url : "" !!}">{!! $wd_item->content !!}</a>
                         </li>
                         @endforeach
-                        {{-- @endif --}}
-                        {{-- <li>
-                           <a href="javascript:void(0)">Giao hàng miễn phí</a>
-                        </li>
-                        <li>
-                           <a href="javascript:void(0)"><i class="fa fa-phone"></i>Gọi cho chúng tôi : 0764710821</a>
-                        </li> --}}
+                        @endif
                      </ul>
                   </div>
                </div>
+               <div class="col-md-4">
+                  <ul class="d-flex justify-content-end">
 
+                     @if (Auth::guard('client')->check())
+                     <li>
+                        <a href="{{ route('client.cart.index') }}">Xin chào {{ auth('client')->user()->name }}</a>
+                     </li>
+                     <li>
+                        <a href="{{ route('client.logout') }}">Đăng xuất</a>
+                     </li>
+                     @else
+                     <li>
+                        <a href="{{ route('client.login') }}">Đăng nhập</a>
+                     </li>
+                     <li>
+                        <a href="{{ route('client.register') }}">Đăng ký</a>
+                     </li>
+                     @endif
+
+                  </ul>
+               </div>
             </div>
          </div>
       </div>

@@ -394,10 +394,10 @@ $widgets = get_widget_not_childrent($widgets);
     @if (empty($wd_bottom_slider_banner_banner_item->detail_id))
     <img src="{!! !empty(Image::find($wd_bottom_slider_banner_banner_item->image_id)) ? Image::find($wd_bottom_slider_banner_banner_item->image_id)->url : "" !!}"
         class="img-fluid bg-img">
-    <div class="custom-container">
+    <div class="custom-container"> 
         <div class="row">
             <div class="col-12 position-relative">
-                <div class="sale-banenr-contain text-center  p-right">
+                <div class="sale-banenr-contain text-center p-right">
                     <div>
                         @if (!empty($wd_bottom_slider_banner_banner_item->details))
                         @foreach ($wd_bottom_slider_banner_banner_item->details as

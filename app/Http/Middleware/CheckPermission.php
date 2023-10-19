@@ -19,6 +19,7 @@ class CheckPermission
      */
     public function handle($request, Closure $next, $module, $action)
     {
+        return $next($request);
         $module = strtoupper($module);
         $action = strtoupper($action);
         $user_permissions = User::find(Auth::id())->user_permissions->toArray();

@@ -190,6 +190,18 @@ Route::middleware('auth')->group(function () {
 });
 
 // ===== Client ===== //
+// Auth
+Route::get('/register', "Client\AuthController@register")->name('client.register');
+Route::post('/register', "Client\AuthController@registerHandle")->name('post.client.register');
+Route::get('/login', "Client\AuthController@login")->name('client.login');
+Route::post('/login', "Client\AuthController@loginHandle")->name('post.client.login');
+Route::get('/logout', "Client\AuthController@logout")->name('client.logout');
+Route::get('/forgot-password', "Client\AuthController@forgotPassword")->name('client.forgot_password');
+Route::post('/forgot-password', "Client\AuthController@forgotPasswordHandle")->name('post.client.forgot_password');
+Route::get('/change-password', "Client\AuthController@changePassword")->name('client.change_password');
+Route::post('/change-password', "Client\AuthController@changePasswordHandle")->name('post.client.change_password');
+
+
 // Home
 Route::get('/', "Client\HomeController@index")->name('client.home');
 Route::get('/quickview', "Client\HomeController@quickview")->name('client.home.quickview');

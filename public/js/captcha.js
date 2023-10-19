@@ -26,7 +26,7 @@ function CreateCaptcha() {
       x = c.width / 2,
       img = new Image();
 
-    img.src = "http://thietkewebsite.io/Project/unimart/public/image/order-track/captcha.jpg";
+    img.src = "http://localhost/unimart/public/image/order-track/captcha.jpg";
     img.onload = function () {
       var pattern = ctx.createPattern(img, "repeat");
       ctx.fillStyle = pattern;
